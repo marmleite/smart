@@ -1,0 +1,36 @@
+#bar-container {
+    margin-top: -25px;
+    height:     5px;
+    width:      100%;
+    position:   fixed;
+    background: #f4f4f4;
+}
+
+#progress-bar {
+    position:    relative;
+    height:      100%;
+    width:       0%;
+    background: darkred;
+}
+
+#header {
+    text-align: center;
+    background: darkgray;
+    text-decoration-color:  lightgray;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.figura {
+    text-align: center;
+    margin-bottom: 4px;    
+    width: 100%;
+    display: block;
+}
+
+/* #logoUFPR {    
+    margin: 0;
+    width: 5px;
+    height: 5px;
+    display: inline-block;    
+} */

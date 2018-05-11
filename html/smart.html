@@ -14,7 +14,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="js/progress-bar.js" type="text/javascript"></script> 
 	<script src="js/play-gif.js" type="text/javascript"></script>
-	<script src="extensions/gifplayer/dist/jquery.gifplayer.js" type="text/javascript"></script>	
+	<script src="js/utils.js" type="text/javascript"></script>
+	<script src="extensions/gifplayer/dist/jquery.gifplayer.js" type="text/javascript"></script>		
+	<script src="extensions/highlight/highlight.pack.js"></script>	
+	<link rel="stylesheet" href="extensions/highlight/styles/agate.css">
+	<script>hljs.initHighlightingOnLoad();</script>
 	<title>Tutorial teste de HDS</title>
 </head>
 
@@ -32,26 +36,38 @@
 		ferramenta SmartMonTools para leitura da saída do S.M.A.R.T test
 		(Self-Monitoring, Analysis and Reporting Technology).
   </p>
-  
-	<h2>2. Instalando o SmartMonTools</h2>
+	<h2>2. Antes de tudo...</h2>
+	<p>Você pode descobrir onde seu HD está montando com o comando:</p>
+	<pre><code class=bash>lsblk</code></pre>
+	<p>Insira seu HD!</p>
+	<form>
+		<input type="text" value="/dev/yyz/" id="formValueId" name="valueId"/>		
+		<input type="button" value="alterar" onclick="subMountPoint(formValueId.value,
+		[
+			codeOne,
+			codeTwo,
+			codeThree,
+			codeFour,
+			codeFive,
+			codeSix,
+			codeSeven,
+			codeEight
+		])"/>
+	</form>
+	
+	<h2>3. Instalando o SmartMonTools</h2>
 	<p> Primeiramente, este procedimento terá seu início pela instalação
 		do pacote SmartMonTools dada pelo seguinte comando:
   </p>
+	<pre><code class="bash">sudo apt-get install -y smartmontools</code></pre> 	
   
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo apt-get install -y smartmontools</code>
-  </div>
-  
-	<h2>3. Teste de Compatibilidade</h2>
+	<h2>4. Teste de Compatibilidade</h2>
 	<p> Após a instalação dos pacotes, o próximo passo é descobrir
 		se o HD a ser testado é compatível com a tecnologia S.M.A.R.T. 
 		Para tanto, utiliza-se o seguinte comando, onde "xyz" deverá 
 		ser substituido pelo nome do seu disco rígido.
-  </p>
-  
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -i /dev/xyz</code>
-  </div>
+  </p>	
+		<pre><code id=codeOne>sudo smartctl -i /dev/xyz</code></pre>  
   
 	<p> A saída desse comando (FIGURA 1) será uma gama de informações
 		relacionadas ao disco, tais como capacidade, modelo, fabricante,
@@ -75,21 +91,16 @@
 	<p> Caso o HD possua compatibilidade, porém não esteja com
 		o suporte habilitado, utiliza-se o seguinte comando
 		para ativação do suporte SMART:
-	</p>
+	</p>		
+	<pre><code id=codeTwo class=bash>sudo smartctl -s on /dev/xyz</code></pre>	
 
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -s on /dev/xyz</code>
-	</div>
-
-	<h2>4. Testando o HD</h2>
+	<h2>5. Testando o HD</h2>
 	<p> Agora, para leitura das informações de auto-teste
 		guardadas no HD, o comando a ser utilizado deverá
 		ser o seguinte:
-	</p>
+	</p>	
 
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -a /dev/xyz</code>
-	</div>
+	<pre><code id=codeThree class=bash>sudo smartctl -a /dev/xyz</code></pre>	
 
 	<p> A saída desse comando retorna uma enorme quantidade de 
 		informações que não possuem fácil leitura, por isso, 
@@ -122,7 +133,7 @@
 		do manual
 	</p>
 
-	<h2>5. Compreendendo os Resultados</h2>
+	<h2>6. Compreendendo os Resultados</h2>
 	<p> Os setores de um disco rígido são as seções em que os dados
 		estão divididos, os testes acima procuram por seções que
 		foram danificadas de alguma maneira e agora estão precisando
@@ -158,12 +169,10 @@
 	<p><strong>OBS</strong>: A tabela acima pode ser obtida também pelo
 		seguinte comando:
 	</p>
+	
+	<pre><code id=codeFour class=bash>sudo smartctl -l selftest /dev/xyz</code></pre>	
 
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -l selftest /dev/xyz</code>
-	</div>
-
-	<h2>6. Reaplicando o Teste</h2>
+	<h2>7. Reaplicando o Teste</h2>
 	<p> Agora que as últimas informações SMART salvas no HD foram lidas,
 		é interessante solicitar um novo self-test (FIGURA 4) e procurar
 		por novos erros e alterações no log, para tanto, utilizaremos um
@@ -172,19 +181,13 @@
 
 	<p> Short ATA Test (Menos de 10 minutos): Realiza um teste procurando por
 		falhas de performance elétromecânica e também por falhas de leitura.
-	</p>
-
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -t short /dev/xyz</code>
-	</div>
+	</p>	
+		<code id=codeFive class=bash>sudo smartctl -t short /dev/xyz</code>
 
 	<p> Long ATA Test (Entre 30 e 40 minutos) : Realiza o mesmo teste executado
 		pelo comando short, porém de maneira extendida.
-	</p>
-
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -t long /dev/xyz</code>
-	</div>
+	</p>	
+	<pre><code id=codeSix class=bash>sudo smartctl -t long /dev/xyz</code></pre>	
 
 	<div id="figura4" class="figura">
 		<figure class="figure">
@@ -197,19 +200,14 @@
 	
 	<p> Para acompanhar o progresso do self-test, utiliza-se o parâmetro -l,
 		como mencionado anteriormente.
-	</p>
+	</p>	
 
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -l sefltest /dev/xyz</code>
-	</div>
-
+	<pre><code id=codeSeven class=bash>sudo smartctl -l sefltest /dev/xyz</code></pre>	
+	
 	<p> Após o término da execução desses testes, é necessário fazer a 
 		releitura do log SMART, utilizando novamente o comando:
-	</p>
-
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>sudo smartctl -a /dev/xyz</code>
-	</div>
+	</p>	
+	<pre><code id=codeEight class=bash>sudo smartctl -a /dev/xyz</code></pre>
 
 	<p><strong>OBS</strong>: É importante lembrar que durante a execução do teste,
 		não se deve utilizar o comando mostrado acima (com o parâmetro -a), pois
@@ -218,17 +216,15 @@
 		o parametro -l para acompanhamento do progresso do teste.
 	</p>
 
-	<h2>7. Conclusão</h2>
+	<h2>8. Conclusão</h2>
 	<p> Por fim, é interessante ler o manual oficial do smartctl através
 		do comando mostrado a baixo e entender mais a fundo seu
 		funcionamento, além de outros parâmetros que a ferramenta oferece
 		(como testes em HD's serial-attached SCSI (SAS))
 	</p>
-
-	<div class="text-center mb-4 alert alert-secondary">
-		<code>man smartctl</code>
-  </div>  
+		<pre><code id=codeNine class=bash>man smartctl</code></pre>
 </div>	
+
 <footer class="footer-distributed">
 	<div class="footer-left">
 		<h3>Universidade Federal do Paraná</h3>		
@@ -245,7 +241,7 @@
 		<p class="footer-company-about">
 			<span>Sobre este documento</span>
 			Este tutorial foi desenvolvido pelos alunos Cassiano Cruz e 
-			Marcelo Marzola, durante a disciplina TI-XXX Ergonomia das 
+			Marcelo Marzola, durante a disciplina TI-160 Ergonomia das 
 			interfaces das aplicações, ministrada pela Prof. Dra. Sandramara.
 			O objetivo da construção deste documento é colocar em prática os 
 			tópicos estudados em sala e os conhecimento adquiridos durante
@@ -253,10 +249,10 @@
 		</p>
 		<div class="footer-icons">
 			
-			<a href="#"><i class="fa fa-facebook"></i></a>			
-			<a href="#"><i class="fa fa-github"></i></a>
-			<a href="#"><i class="fa fa-question"></i></a>
-			<a href="mailto:support@smarttest.com"><i class="fa fa-envelope"></i></a>			
+			<a href="https://facebook.com/cassianosricardo"><i class="fa fa-facebook"></i></a>			
+			<a href="https://github.com/Cassianosricardo/smart.git"><i class="fa fa-github"></i></a>
+			<a href="mailto:cassiano.sricardo@gmail.com"><i class="fa fa-question"></i></a>
+			<a href="mailto:cassiano.sricardo@gmail.com"><i class="fa fa-envelope"></i></a>			
 		</div>
 	</div>
 </footer>

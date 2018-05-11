@@ -41,8 +41,9 @@
 	<pre><code class=bash>lsblk</code></pre>
 	<p>Insira seu HD!</p>
 	<form>
-		<input type="text" value="/dev/yyz/" id="formValueId" name="valueId"/>		
-		<input type="button" value="alterar" onclick="subMountPoint(formValueId.value,
+		<script> window.lastMountPoint = "/dev/xyz" </script>
+		<input type="text" value="/dev/yyz" id="formValueId" name="valueId"/>		
+		<input type="button" value="alterar" onclick="ninjaCodeSub(formValueId.value,
 		[
 			codeOne,
 			codeTwo,
@@ -52,7 +53,7 @@
 			codeSix,
 			codeSeven,
 			codeEight
-		])"/>
+		])"/>		
 	</form>
 	
 	<h2>3. Instalando o SmartMonTools</h2>

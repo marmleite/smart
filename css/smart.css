@@ -83,7 +83,7 @@
   bottom: -100%;
   width: 30%;
   height:20%;
-  font-size: 18px;
+  font-size: 100%;
   font-weight: 700;
   color: #ccc;
 }
@@ -93,9 +93,26 @@
   bottom: -100%;
   width: 20%;
   height:auto;
-  font-size: 18px;
+  font-size: 100%;
   font-weight: 700;
   color: #fff;
+}
+
+#nav button {
+  position: fixed;
+  bottom: -100%;
+  width: 15%;
+  height:auto;
+  font-size: 100%;
+  font-weight: 700;
+  color: #faa;
+  border: groove; 
+}
+
+@media (max-width: 500px) {
+    html { font-size: 80%; }
+    p { font-size: 80%; }
+    button { font-size: 80%; }
 }
   
 #products, #contact {
@@ -117,10 +134,12 @@
 #s { left: 10%; }
 #p { left: 10%;  }
 #menu     { left: 40%; }
+#enviar   { left: 42.5%; }
 #about    { left: 60%; }
 #contact  { left: 60%; }
 #a    { left: 60%; }
 #c  { left: 60%; }
+#t  { left: 40%; }
 
 [id*="border-"]{
   position:fixed;
@@ -157,14 +176,16 @@
 }
 
 #button + label {
+  border-radius: 5px;
   position: fixed;
+  background-color: #fff;
   text-align:center;
   font-weight:bold;
-  font-size:3em;
-  left:0; right:0; top:100; bottom:0;
-  margin:auto auto 10px auto;
-  width:35px; height:35px;
-  line-height:35px;
+  font-size:2em;
+  left:0; right:0; top:50; bottom:0;
+  margin:0 3% 1% auto;
+  width:50px; height:50px;
+  line-height:50px;
   cursor:pointer;
   z-index:1;  
 }
@@ -180,6 +201,8 @@
 #button:checked ~ #border-right { right:0; }
 #button:checked ~ #border-bottom { bottom:0; width:90%; }
 
+#button:checked ~ #nav #t {bottom: 80%;}
+
 #button:checked ~ #nav #products {bottom: 50%;}
  #button:checked ~ #nav #contact {bottom: 50%;}
  #button:checked ~ #nav #p {bottom: 70%;}
@@ -189,6 +212,8 @@
 #button:checked ~ #nav #about {bottom: 10%;}
 #button:checked ~ #nav #s {bottom: 30%;}
 #button:checked ~ #nav #a {bottom: 30%;}
+
+#button:checked ~ #nav #enviar {bottom: 5%;}
 
 #button:checked ~ #cover {
   -webkit-animation: FADE 1s;

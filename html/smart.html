@@ -4,7 +4,7 @@
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 	
 	<!-- page icon -->
-	<link rel="shortcut icon" href="images/icon.ico" author="Icon made by CC 3.0 BY from www.flaticon.com"/>
+	<link rel="shortcut icon" href="images/icon.ico" author="Icon made by CC 3.0 BY from www.flaticon.com"/>	
 	<!-- css -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -13,16 +13,6 @@
 	<link rel="stylesheet" type="text/css" href="extensions/gifplayer/dist/gifplayer.css"/>
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="extensions/highlight/styles/agate.css">	
-	<!-- javascript -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="extensions/gifplayer/dist/jquery.gifplayer.js" type="text/javascript"></script>		
-	<script src="extensions/highlight/highlight.pack.js"></script>	
-	<script src="js/progress-bar.js" type="text/javascript"></script> 
-	<script src="js/play-gif.js" type="text/javascript"></script>
-	<script src="js/utils.js" type="text/javascript"></script>
-	<script src="js/init_highlight.js" type="text/javascript"></script>	
 	<title>SMART Test</title>
 </head>
 
@@ -43,7 +33,7 @@
 	<h2>2. Antes de tudo...</h2>
 	<p>Você pode descobrir onde seu HD está montando com o comando:</p>
 	<pre><code class=bash>lsblk</code></pre>
-	<p>Insira seu HD!</p>
+	<p>Para facilitar a cópia de comandos insira abaixo o mountpoint de seu HD!</p>
 	<form>
 		<script> window.lastMountPoint = "/dev/xyz" </script>
 		<input type="text" value="/dev/yyz" id="formValueId" name="valueId"/>		
@@ -62,7 +52,7 @@
 	
 	<h2>3. Instalando o SmartMonTools</h2>
 	<p> Primeiramente, este procedimento terá seu início pela instalação
-		do pacote SmartMonTools dada pelo seguinte comando:
+		do pacote SmartMonTools.<br> Copie e cole o seguinte comando:
   </p>
 	<pre><code class="bash">sudo apt-get install -y smartmontools</code></pre> 	
   
@@ -70,13 +60,17 @@
 	<p> Após a instalação dos pacotes, o próximo passo é descobrir
 		se o HD a ser testado é compatível com a tecnologia S.M.A.R.T. 
 		Para tanto, utiliza-se o seguinte comando, onde "xyz" deverá 
-		ser substituido pelo nome do seu disco rígido.
+		ser substituído pelo mountpoint de seu disco rígido.
   </p>	
 		<pre><code id=codeOne>sudo smartctl -i /dev/xyz</code></pre>  
   
 	<p> A saída desse comando (FIGURA 1) será uma gama de informações
 		relacionadas ao disco, tais como capacidade, modelo, fabricante,
 		etc.
+	</p>
+
+	<p>Clique na aba do terminal da figura abaixo para reproduzir o comando, clique
+		novamente para mostrar somente sua saída.
 	</p>
 
 	<div id="figura1" class="figura">
@@ -109,13 +103,13 @@
 
 	<p> A saída desse comando retorna uma enorme quantidade de 
 		informações que não possuem fácil leitura, por isso, 
-		nessa seção serão explicadas algumas das informaões
+		nessa seção serão explicadas algumas das informações
 		mais importantes e que devem sempre ser checadas.
 	</p>
 
 	<p> Na imagem abaixo (FIGURA 2) é possível ver uma série
 		de testes que foram realizados e suas respectivas saídas,
-		sendo duas delas as mais importantes.
+		sendo duas delas as mais importantes:
 	</p>
 
 	<samp class="m-4">
@@ -135,7 +129,7 @@
 
 	<p><strong>OBS</strong>: Para testes em HD's SCSI utiliza-se
 		mesmos parâmetros, porém é interessante realizar a leitura
-		do manual
+		do manual.
 	</p>
 
 	<h2>6. Compreendendo os Resultados</h2>
@@ -143,7 +137,7 @@
 		estão divididos, os testes acima procuram por seções que
 		foram danificadas de alguma maneira e agora estão precisando
 		de realocamento, pois, devido ao seu mal funcionamento, não
-		podem mais ser lidas ou modificadas, em um HD saudável,
+		podem mais ser lidas ou modificadas, em um HD saudável
 		o resultado desse teste deverá ser 0.
 	</p>
 	
@@ -260,5 +254,15 @@
 		</div>
 	</div>
 </footer>
+<!-- javascript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="extensions/gifplayer/dist/jquery.gifplayer.js" type="text/javascript"></script>		
+<script src="extensions/highlight/highlight.pack.js"></script>	
+<script src="js/progress-bar.js" type="text/javascript"></script> 
+<script src="js/play-gif.js" type="text/javascript"></script>
+<script src="js/utils.js" type="text/javascript"></script>
+<script src="js/init_highlight.js" type="text/javascript"></script>	
 </body>
 </html>

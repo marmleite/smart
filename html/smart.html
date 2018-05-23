@@ -268,17 +268,34 @@
 <form>
 
     <ul>
-    	<li><p id="titulo">PESQUISA DE SATISFAÇÃO DO USUÁRIO</p></li>
+    	<li><p id="titulo">PESQUISA DE SATISFAÇÃO</p></li>
       	<li><p id="enunciado1">Você entendeu todas etapas do material?</p></li>
-        <li><textarea id="questao1"></textarea></li>
+        <li>
+			<div id="questao1">
+				<input type="radio" name="entendimento" value="nada"> Não entendi nada<br>
+				<input type="radio" name="entendimento" value="pouco"> Entendi um pouco<br>
+				<input type="radio" name="entendimento" value="bem"> Entendi bem<br>
+				<input type="radio" name="entendimento" value="perfeitamente"> Entendi perfeitamente
+			</div>
+		</li>
         <li><p id="enunciado2">O conteúdo foi útil e satisfatório?</p></li>
-        <li><textarea id="questao2"></textarea></li>
+        <li><div id="questao2">
+			<input type="radio" name="utilidade" value="inutil"> Totalmente inútil<br>
+			<input type="radio" name="utilidade" value="algo"> Aproveitei alguma coisa<br>
+			<input type="radio" name="utilidade" value="bastante"> Me ajudou bastante<br>
+			<input type="radio" name="utilidade" value="salvou"> Salvou a minha vida
+		</div></li>
         <li><a href="#" id="menu"></a></li>
         <li><button id="enviar" class="btn">ENVIAR</button></li>
         <li><p id="enunciado3">Alguma sugestão de melhoria?</p></li>
         <li><textarea id="questao3"></textarea></li>
-        <li><p id="enunciado4">Encontrou alguma dificuldade em seguir o tutorial?</p></li>
-        <li><textarea id="questao4"></textarea></li>
+        <li><p id="enunciado4">Foi difícil em seguir o tutorial?</p></li>
+        <li><div id="questao4">
+			<input type="radio" name="dificuldade" value="nada"> Nem um pouco<br>
+			<input type="radio" name="dificuldade" value="pouco"> Um pouco<br>
+			<input type="radio" name="dificuldade" value="bastante"> Bastante<br>
+			<input type="radio" name="dificuldade" value="impossivel"> Impossível
+		</div></li>
     </ul>
 </form>
 

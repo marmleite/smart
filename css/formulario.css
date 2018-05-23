@@ -9,10 +9,20 @@
     position: fixed;
     bottom: -100%;
     width: 30%;
-    height:20%;
+    height:12%;
     font-size: 100%;
     font-weight: 700;
     color: rgb(0, 0, 0);
+}
+
+#nav div {
+    position: fixed;
+    bottom: -100%;
+    width: 30%;
+    height:20%;
+    font-size: 100%;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
 }
     
 #nav p {
@@ -32,7 +42,7 @@
     height:auto;
     font-size: 100%;
     font-weight: 700;
-    color: #faa;
+    color: rgb(94, 89, 136);
     border: groove; 
 }
   
@@ -130,12 +140,12 @@
 #button:checked ~ #border-right { right:0; }
 #button:checked ~ #border-bottom { bottom:0; width:90%; }
 
-#button:checked ~ #nav #ttitulo {bottom: 80%;}
+#button:checked ~ #nav #titulo {bottom: 80%;}
 
 #button:checked ~ #nav #questao1 {bottom: 50%;}
 #button:checked ~ #nav #questao4 {bottom: 50%;}
 #button:checked ~ #nav #questao2 {bottom: 10%;}
-#button:checked ~ #nav #questao3 {bottom: 10%;}
+#button:checked ~ #nav #questao3 {bottom: 17%;}
 
 #button:checked ~ #nav #enunciado1 {bottom: 70%;}
 #button:checked ~ #nav #enunciado4 {bottom: 70%;}
